@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pellet Market Monitor — constant US + EU pellet price monitoring, alerts when your market moves</title>
+<style>
+:root{
+  --bg:#131512; --panel:#1b1e19; --panel2:#22261f; --line:#2c3129; --line2:#3a4034;
+  --ink:#e8eae4; --mut:#9aa392; --dim:#6d7566;
+  --amber:#F0A400; --amber-dim:#8a6100; --green:#39b54a; --red:#d95c4a;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  -webkit-font-smoothing:antialiased}
+a{color:var(--amber);text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:980px;margin:0 auto;padding:0 18px}
+header.site{border-bottom:1px solid var(--line);background:#161913}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:10px;padding-top:14px;padding-bottom:14px}
+.brand{font-weight:800;letter-spacing:.14em;font-size:14px;color:var(--amber)}
+.brand small{display:block;letter-spacing:.05em;color:var(--mut);font-weight:500;font-size:11px}
+nav a{color:var(--mut);font-size:13px;margin-left:18px}
+nav a:hover{color:var(--amber);text-decoration:none}
+.hero{padding:56px 0 30px}
+.kicker{color:var(--amber);font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase}
+h1{font-size:34px;line-height:1.2;margin:12px 0 14px;font-weight:800}
+.sub{color:var(--mut);font-size:18px;max-width:700px}
+h2{font-size:22px;margin:0 0 6px}
+h3{font-size:16px;margin:0 0 4px}
+.sect{padding:34px 0;border-top:1px solid var(--line)}
+.sect .lead{color:var(--mut);max-width:760px;margin:0 0 18px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:26px 0}
+.stat{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.stat b{display:block;font-size:24px;color:var(--amber);font-weight:800}
+.stat span{color:var(--mut);font-size:13px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:18px}
+.card h3{color:var(--ink)}
+.card p{color:var(--mut);font-size:14px;margin:8px 0 0}
+.card .tag{display:inline-block;font-size:11px;color:var(--amber);border:1px solid var(--amber-dim);
+  border-radius:20px;padding:2px 10px;margin-bottom:8px;letter-spacing:.08em;text-transform:uppercase}
+.tblwrap{overflow-x:auto;background:var(--panel);border:1px solid var(--line);
+  border-radius:10px;margin:14px 0 6px}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th{font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--mut);
+  text-align:left;padding:10px 12px;border-bottom:1px solid var(--line2);white-space:nowrap}
+td{padding:9px 12px;border-bottom:1px solid #23271f;white-space:nowrap}
+tr:last-child td{border-bottom:none}
+tbody tr:nth-child(even){background:#171a14}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+td.strong{font-weight:600}
+.caption{color:var(--dim);font-size:12px;margin:2px 0 20px}
+.pill{display:inline-block;font-size:11px;border-radius:20px;padding:1px 9px;font-weight:600}
+.pill.ok{color:var(--green);border:1px solid #2c5c33}
+.pill.idle{color:var(--mut);border:1px solid var(--line2)}
+.btn{display:inline-block;background:var(--amber);color:#131512;font-weight:700;
+  border-radius:8px;padding:12px 20px;font-size:15px}
+.btn:hover{filter:brightness(1.08);text-decoration:none}
+.btn.ghost{background:transparent;color:var(--amber);border:1px solid var(--amber-dim)}
+.btnrow{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
+.price{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:20px}
+.price .amt{font-size:30px;font-weight:800;color:var(--amber)}
+.price .per{color:var(--mut);font-size:13px}
+.price ul{margin:12px 0 16px;padding-left:18px;color:var(--mut);font-size:14px}
+.price li{margin:5px 0}
+.price .pick{color:var(--amber);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+  border:1px solid var(--amber-dim);border-radius:20px;padding:2px 10px;display:inline-block;margin-bottom:8px}
+.plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px;align-items:start}
+.alerts{list-style:none;margin:14px 0;padding:0}
+.alerts li{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--amber);
+  border-radius:8px;padding:12px 14px;margin-bottom:10px;font-size:14px;color:var(--mut)}
+.alerts li b{color:var(--ink)}
+footer.site{border-top:1px solid var(--line);margin-top:30px;padding:26px 0 40px;color:var(--dim);font-size:13px}
+footer.site a{color:var(--mut)}
+.note{background:var(--panel2);border:1px dashed var(--line2);border-radius:8px;
+  padding:12px 14px;color:var(--mut);font-size:13px;margin:16px 0}
+@media(max-width:720px){
+  h1{font-size:26px}.hero{padding:36px 0 20px}
+  nav a{margin-left:12px;font-size:12px}
+  .btn{display:block;text-align:center;margin-bottom:10px}
+  .btnrow{display:block}
+}
+</style>
+</head>
+<body>
+<header class="site"><div class="wrap">
+  <div class="brand">PELLET MARKET MONITOR<small>US wood-pellet market intelligence</small></div>
+  
+    <nav>
+      <a href="index.html">Overview</a>
+      <a href="sample/sample-digest.html">Sample digest</a>
+      <a href="sample/sample-milldb.html">Sample mill DB</a>
+      <a href="sample/sample-eubench.html">Sample EU benchmarks</a>
+      <a href="index.html#pricing">Pricing</a>
+    </nav>
+</div></header>
+
+<section class="hero"><div class="wrap">
+  <div class="kicker">Weekly US + EU wood-pellet market monitoring</div>
+  <h1>Constant monitoring of US pellet market pricing.<br>Alerts when your market moves.</h1>
+  <p class="sub">Production, feedstock costs, export prices, and EU benchmarks — tracked every
+  week so you hear about the move from us, not from your supplier's next quote.</p>
+  <div class="btnrow">
+    <a class="btn" href="mailto:njjones1999@gmail.com?subject=Sample%20digest%20request%20%E2%80%94%20Pellet%20Market%20Monitor&body=Please%20send%20me%20the%20latest%20sample%20digest%20of%20the%20Pellet%20Market%20Monitor.">
+      Request a sample digest — free</a>
+    <a class="btn ghost" href="#pricing">See pricing</a>
+  </div>
+
+  <!-- PAYMENTS TODO (post-approval): hero CTA above stays mailto until Stripe is wired.
+       Stripe Checkout links will replace the $99 pack CTA in the Pricing section (search
+       "PAYMENTS TODO" below). No other payment paths exist on this page. -->
+
+  <div class="stats">
+    <div class="stat"><b>87</b><span>US pellet mills tracked (EIA-63C)</span></div>
+    <div class="stat"><b>13.1M</b><span>tons/yr listed mill capacity</span></div>
+    <div class="stat"><b>2,212</b><span>ENplus producers watched (1,420 active, 60 countries)</span></div>
+    <div class="stat"><b>Weekly</b><span>digest + threshold price alerts</span></div>
+  </div>
+</div></section>
+
+<section class="sect" id="get"><div class="wrap">
+  <h2>What subscribers get</h2>
+  <p class="lead">One weekly email that answers the only question that matters: which numbers
+  moved, and by how much.</p>
+  <div class="cards">
+    <div class="card"><span class="tag">Weekly digest</span><h3>Every series, every week</h3>
+      <p>US production by region and grade, feedstock costs (roundwood, sawmill residuals,
+      wood-product residuals), export volume and price, retail by region, and the EU side:
+      DEPV (Germany) and BaltPool (Baltic spot).</p></div>
+    <div class="card"><span class="tag">Alerts</span><h3>Price alerts on threshold moves</h3>
+      <p>You set the thresholds — series, direction, percentage. When a series crosses the
+      line (week-over-week or month-over-month), you get a short email with the move and the
+      underlying numbers. No dashboard to babysit.</p></div>
+    <div class="card"><span class="tag">US + EU</span><h3>One harmonized view</h3>
+      <p>US export prices in $/ton next to DEPV in €/ton and BaltPool in €/MWh, on the same
+      dates — so a German retail move or a Baltic utility tender is visible against US export
+      economics in one table.</p></div>
+    <div class="card"><span class="tag">Buyer map</span><h3>Who buys, where</h3>
+      <p>Export destinations with volumes and implied $/ton (UN Comtrade HS 4401.31), plus an
+      ENplus producer map by country — the demand side and the supplier universe in one file.</p></div>
+    <div class="card"><span class="tag">Delivery</span><h3>Email + CSV</h3>
+      <p>The digest lands as email with CSV attachments of every table. Machine-readable by
+      default; paste straight into your own models or procurement sheets.</p></div>
+    <div class="card"><span class="tag">Coverage</span><h3>Public sources, verified</h3>
+      <p>Built only from public data — EIA-63C, DEPV, BaltPool, the ENplus directory, UN
+      Comtrade — reconciled and drift-checked every fetch. We claim no exclusivity on the
+      sources; the product is the monitoring and the alerts.</p></div>
+  </div>
+</div></section>
+
+<section class="sect" id="data"><div class="wrap">
+  <h2>The data, live samples</h2>
+  <p class="lead">Real numbers from the current dataset (as of EIA-63C data through May 2026 (report released August 13, 2026) · DEPV 2026-08 · BaltPool 2026-09-01 · UN Comtrade 2024 annual · all series fetched 2026-09-03).
+  Full pages: <a href="sample/sample-digest.html">sample weekly digest</a> ·
+  <a href="sample/sample-milldb.html">sample mill database</a> ·
+  <a href="sample/sample-eubench.html">sample EU benchmarks</a>.</p>
+
+  <h3>US pellet mills — top 10 by listed capacity <span style="color:var(--dim);font-weight:400">(of 87 tracked, 85 operating)</span></h3>
+  <div class="tblwrap"><table>
+    <thead><tr><th>Mill</th><th>State</th><th>Region</th><th>Status</th><th class="num">Capacity (tons/yr)</th></tr></thead>
+    <tbody>
+<tr><td class='strong'>Georgia Biomass</td><td>GA</td><td>South</td><td><span class="pill ok">Operating</span></td><td class='num'>826,733</td></tr>
+<tr><td class='strong'>Highland Pellets</td><td>AR</td><td>South</td><td><span class="pill ok">Operating</span></td><td class='num'>744,060</td></tr>
+<tr><td class='strong'>Lasalle Bioenergy, LLC</td><td>LA</td><td>South</td><td><span class="pill ok">Operating</span></td><td class='num'>672,901</td></tr>
+<tr><td class='strong'>Morehouse Bioenergy</td><td>LA</td><td>South</td><td><span class="pill ok">Operating</span></td><td class='num'>609,527</td></tr>
+<tr><td class='strong'>Hamlet</td><td>NC</td><td>South</td><td><span class="pill ok">Operating</span></td><td class='num'>600,000</td></tr>
+<tr><td class='strong'>Amite Bioenergy</td><td>MS</td><td>South</td><td><span class="pill ok">Operating</span></td><td class='num'>523,693</td></tr>
+<tr><td class='strong'>Woodville Pellets LLC</td><td>TX</td><td>South</td><td><span class="pill ok">Operating</span></td><td class='num'>507,063</td></tr>
+<tr><td class='strong'>Alabama Pellets, LLC-Demopolis</td><td>AL</td><td>South</td><td><span class="pill ok">Operating</span></td><td class='num'>400,439</td></tr>
+<tr><td class='strong'>Alabama Pellets, LLC-Aliceville</td><td>AL</td><td>South</td><td><span class="pill ok">Operating</span></td><td class='num'>358,150</td></tr>
+<tr><td class='strong'>Fram Renewable Fuels - Hazlehurst</td><td>GA</td><td>South</td><td><span class="pill ok">Operating</span></td><td class='num'>350,000</td></tr>
+    </tbody>
+  </table></div>
+  <p class="caption">Source: EIA-63C Table 1, fetched 2026-09-03. Full 87-mill table with region,
+  status, and capacity is in the subscription digest and the $99 dataset pack.</p>
+
+  <h3>US production &amp; exports — May 2026 <span style="color:var(--dim);font-weight:400">(latest EIA month; prior April 2026 for comparison)</span></h3>
+  <div class="tblwrap"><table>
+    <thead><tr><th>Series</th><th class="num">May 2026</th><th class="num">April 2026</th><th class="num">Change</th></tr></thead>
+    <tbody>
+      <tr><td class="strong">US production, total</td>
+          <td class="num">931,315 st</td><td class="num">877,892 st</td>
+          <td class="num"><span style="color:#39b54a;font-weight:600">▲ 6.1%</span></td></tr>
+      <tr><td class="strong">&nbsp;&nbsp;premium/standard</td>
+          <td class="num">127,679 st</td><td class="num">119,454 st</td>
+          <td class="num"><span style="color:#39b54a;font-weight:600">▲ 6.9%</span></td></tr>
+      <tr><td class="strong">&nbsp;&nbsp;utility</td>
+          <td class="num">803,636 st</td><td class="num">758,438 st</td>
+          <td class="num"><span style="color:#39b54a;font-weight:600">▲ 6.0%</span></td></tr>
+      <tr><td class="strong">Exports, all destinations</td>
+          <td class="num">808,518 st</td>
+          <td class="num">845,914 st</td>
+          <td class="num"><span style="color:#d95c4a;font-weight:600">▼ 4.4%</span></td></tr>
+      <tr><td class="strong">Export average price</td>
+          <td class="num">$205.71/st</td>
+          <td class="num">$208.14/st</td>
+          <td class="num"><span style="color:#d95c4a;font-weight:600">▼ 1.2%</span></td></tr>
+    </tbody>
+  </table></div>
+  <p class="caption">Year-to-date (January–May 2026): 4,435,579 st produced ·
+  3,829,601 st exported · $792.3M export value · $206.88/st average.
+  Source: EIA-63C Tables 3/4/8.</p>
+
+  <h3>EU benchmarks — latest prints</h3>
+  <div class="cards">
+    <div class="card">
+      <h3>DEPV — German retail index, 2026-08</h3>
+      <div class="tblwrap" style="border:none;margin:0;background:transparent"><table>
+        <thead><tr><th>Series</th><th class="num">€/ton</th><th class="num">MoM</th></tr></thead>
+        <tbody>
+          <tr><td class="strong">DEPV 6t (national)</td><td class="num">399.74</td>
+              <td class="num"><span style="color:#39b54a;font-weight:600">▲ 10.2%</span></td></tr>
+          <tr><td class="strong">DEPV 26t (national)</td><td class="num">383.40</td>
+              <td class="num"><span style="color:#39b54a;font-weight:600">▲ 9.4%</span></td></tr>
+        </tbody>
+      </table></div>
+      <p class="caption">vs 2026-07: 6t 362.70 · 26t 350.30.
+      Source: DEPV pelletpreis.</p>
+    </div>
+    <div class="card">
+      <h3>BaltPool — Baltic industrial spot</h3>
+      <div class="tblwrap" style="border:none;margin:0;background:transparent"><table>
+        <thead><tr><th>Week</th><th class="num">€/MWh</th><th class="num">WoW</th></tr></thead>
+        <tbody>
+<tr><td>2026-07-28</td><td class='num strong'>€26.80</td><td class='num'><span style="color:var(--dim)">—</span></td></tr>
+<tr><td>2026-08-04</td><td class='num strong'>€26.44</td><td class='num'><span style="color:#d95c4a;font-weight:600">▼ 1.3%</span></td></tr>
+<tr><td>2026-08-11</td><td class='num strong'>€27.22</td><td class='num'><span style="color:#39b54a;font-weight:600">▲ 3.0%</span></td></tr>
+<tr><td>2026-08-18</td><td class='num strong'>€27.03</td><td class='num'><span style="color:#d95c4a;font-weight:600">▼ 0.7%</span></td></tr>
+<tr><td>2026-08-25</td><td class='num strong'>€27.93</td><td class='num'><span style="color:#39b54a;font-weight:600">▲ 3.3%</span></td></tr>
+<tr><td>2026-09-01</td><td class='num strong'>€29.46</td><td class='num'><span style="color:#39b54a;font-weight:600">▲ 5.5%</span></td></tr>
+        </tbody>
+      </table></div>
+      <p class="caption">Latest print 2026-09-01: €29.46/MWh.
+      Source: BaltPool spot.</p>
+    </div>
+  </div>
+
+  <h3>Top US export destinations, 2024 <span style="color:var(--dim);font-weight:400">(UN Comtrade, HS 4401.31)</span></h3>
+  <div class="tblwrap"><table>
+    <thead><tr><th>Destination</th><th class="num">Volume (tons)</th><th class="num">Value</th><th class="num">Avg $/ton</th></tr></thead>
+    <tbody>
+<tr><td class='strong'>United Kingdom</td><td class='num'>7,004,305</td><td class='num'>$1,342.1M</td><td class='num'>$191.61</td></tr>
+<tr><td class='strong'>Japan</td><td class='num'>1,150,033</td><td class='num'>$195.6M</td><td class='num'>$170.05</td></tr>
+<tr><td class='strong'>Netherlands</td><td class='num'>659,378</td><td class='num'>$104.9M</td><td class='num'>$159.08</td></tr>
+<tr><td class='strong'>Denmark</td><td class='num'>648,648</td><td class='num'>$111.9M</td><td class='num'>$172.51</td></tr>
+<tr><td class='strong'>World (all destinations)</td><td class='num'>10,004,015</td><td class='num'>$1,859.2M</td><td class='num'>$185.85</td></tr>
+    </tbody>
+  </table></div>
+  <p class="caption">2024 annual totals. The buyer map (59 countries, ENplus producer counts
+  by destination) ships with the subscription and the dataset pack.</p>
+</div></section>
+
+<section class="sect" id="pricing"><div class="wrap">
+  <h2>Pricing</h2>
+  <p class="lead">Cancel any time. The digest and alerts arrive by email; every table ships as CSV.</p>
+
+  <!-- ============================================================
+       PAYMENTS TODO — WHERE STRIPE GOES (after operator approval):
+       Replace each mailto CTA below with a Stripe Checkout payment link:
+         1. Monitoring monthly  — $49/mo   recurring  -> [STRIPE_LINK_MONTHLY]
+         2. Monitoring annual   — $499/yr  recurring  -> [STRIPE_LINK_ANNUAL]
+         3. Dataset pack        — $99 one-off         -> [STRIPE_LINK_PACK]
+       Keep the mailto links as the fallback line under each button
+       ("or email ...") while Stripe is in test mode. Until then the
+       mailto CTAs are the only order path. No JS is needed for
+       Stripe Checkout payment links — a plain <a href> is enough.
+       ============================================================ -->
+
+  <div class="plans">
+    <div class="price">
+      <span class="pick">Subscription</span>
+      <div class="amt">$49<span style="font-size:15px;color:var(--mut)">/mo</span></div>
+      <div style="color:var(--mut);font-size:13px">or $499/yr (2 months free)</div>
+      <ul>
+        <li>Weekly digest: US production, feedstock costs, retail by region, export prices, EU benchmarks (DEPV + BaltPool)</li>
+        <li>Threshold price alerts — your series, your thresholds, by email</li>
+        <li>Harmonized US + EU view and the buyer map</li>
+        <li>Every table as CSV attachment</li>
+      </ul>
+      <a class="btn" href="mailto:njjones1999@gmail.com?subject=Subscription%20%E2%80%94%20Pellet%20Market%20Monitor%20%28%2449/mo%29&body=I%20would%20like%20to%20subscribe%20at%20%2449/month.%20Please%20send%20payment%20details.">
+        Subscribe — $49/mo</a>
+      <a class="btn ghost" style="margin-top:10px" href="mailto:njjones1999@gmail.com?subject=Subscription%20%E2%80%94%20Pellet%20Market%20Monitor%20%28%24499/yr%29&body=I%20would%20like%20to%20subscribe%20at%20%24499/year.%20Please%20send%20payment%20details.">
+        Subscribe — $499/yr</a>
+    </div>
+    <div class="price">
+      <span class="pick">One-off</span>
+      <div class="amt">$99</div>
+      <div style="color:var(--mut);font-size:13px">dataset pack, single purchase</div>
+      <ul>
+        <li>All 87 US mills with region, status, and capacity</li>
+        <li>US production / feedstock / export price series (10-year monthly depth as context)</li>
+        <li>EU benchmarks: DEPV + BaltPool history</li>
+        <li>Buyer map: 38 export destinations with volumes</li>
+        <li>Delivered as CSV + Excel</li>
+      </ul>
+      <a class="btn" href="mailto:njjones1999@gmail.com?subject=Dataset%20pack%20order%20%E2%80%94%20%2499%20%E2%80%94%20Pellet%20Market%20Monitor&body=I%20would%20like%20to%20buy%20the%20%2499%20dataset%20pack.%20Please%20send%20payment%20details.">
+        Buy dataset pack — $99</a>
+    </div>
+    <div class="price">
+      <span class="pick">Free</span>
+      <div class="amt">$0</div>
+      <div style="color:var(--mut);font-size:13px">sample digest + sample pages</div>
+      <ul>
+        <li>One full sample digest built from the current data</li>
+        <li>Sample mill database and EU benchmark pages</li>
+        <li>No obligation — see exactly what a week looks like</li>
+      </ul>
+      <a class="btn ghost" href="mailto:njjones1999@gmail.com?subject=Sample%20digest%20request%20%E2%80%94%20Pellet%20Market%20Monitor&body=Please%20send%20me%20the%20latest%20sample%20digest%20of%20the%20Pellet%20Market%20Monitor.">
+        Request sample digest</a>
+      <p style="margin-top:12px"><a href="sample/sample-digest.html" style="color:var(--amber)">View the sample pages online →</a></p>
+    </div>
+  </div>
+  <div class="note">Orders and sample requests currently go straight to
+  <a href="mailto:njjones1999@gmail.com" style="color:var(--amber)">njjones1999@gmail.com</a>; you get a reply with payment
+  details and delivery within one business day. Self-serve checkout is being added.</div>
+</div></section>
+
+<section class="sect" id="who"><div class="wrap">
+  <h2>Who it is for</h2>
+  <p class="lead">Built for people who price, buy, sell, or finance wood pellets and need the
+  week's numbers before the market tells them.</p>
+  <div class="cards">
+    <div class="card"><h3>EU buyers &amp; procurement teams</h3><p>Track US export price direction
+      and Baltic utility spot against your contract renewals — with alerts when either moves.</p></div>
+    <div class="card"><h3>Export traders &amp; brokers</h3><p>See production, feedstock cost
+      pressure, and destination volumes in one view; get pinged when a benchmark crosses your
+      threshold.</p></div>
+    <div class="card"><h3>Analysts &amp; investors</h3><p>A clean weekly series set — US supply,
+      US export pricing, EU demand-side benchmarks — delivered as data, not a PDF to re-type.</p></div>
+  </div>
+</div></section>
+
+
+<footer class="site"><div class="wrap">
+  <b style="color:var(--mut)">Scriptores Helm LLC</b> · Mississippi, USA<br>
+  Data sources: EIA · DEPV · BaltPool · ENplus · UN Comtrade — all public sources; the value added is harmonization,
+  monitoring, and alerting.<br>
+  Contact: <a href="mailto:njjones1999@gmail.com">njjones1999@gmail.com</a> ·
+  Sample pages: <a href="sample/sample-digest.html">digest</a> ·
+  <a href="sample/sample-milldb.html">mill DB</a> ·
+  <a href="sample/sample-eubench.html">EU benchmarks</a>
+</div></footer>
+
+</body>
+</html>

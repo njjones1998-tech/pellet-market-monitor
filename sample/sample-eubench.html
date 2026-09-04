@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sample EU benchmarks — Pellet Market Monitor</title>
+<style>
+:root{
+  --bg:#131512; --panel:#1b1e19; --panel2:#22261f; --line:#2c3129; --line2:#3a4034;
+  --ink:#e8eae4; --mut:#9aa392; --dim:#6d7566;
+  --amber:#F0A400; --amber-dim:#8a6100; --green:#39b54a; --red:#d95c4a;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  -webkit-font-smoothing:antialiased}
+a{color:var(--amber);text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:980px;margin:0 auto;padding:0 18px}
+header.site{border-bottom:1px solid var(--line);background:#161913}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:10px;padding-top:14px;padding-bottom:14px}
+.brand{font-weight:800;letter-spacing:.14em;font-size:14px;color:var(--amber)}
+.brand small{display:block;letter-spacing:.05em;color:var(--mut);font-weight:500;font-size:11px}
+nav a{color:var(--mut);font-size:13px;margin-left:18px}
+nav a:hover{color:var(--amber);text-decoration:none}
+.hero{padding:56px 0 30px}
+.kicker{color:var(--amber);font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase}
+h1{font-size:34px;line-height:1.2;margin:12px 0 14px;font-weight:800}
+.sub{color:var(--mut);font-size:18px;max-width:700px}
+h2{font-size:22px;margin:0 0 6px}
+h3{font-size:16px;margin:0 0 4px}
+.sect{padding:34px 0;border-top:1px solid var(--line)}
+.sect .lead{color:var(--mut);max-width:760px;margin:0 0 18px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:26px 0}
+.stat{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.stat b{display:block;font-size:24px;color:var(--amber);font-weight:800}
+.stat span{color:var(--mut);font-size:13px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:18px}
+.card h3{color:var(--ink)}
+.card p{color:var(--mut);font-size:14px;margin:8px 0 0}
+.card .tag{display:inline-block;font-size:11px;color:var(--amber);border:1px solid var(--amber-dim);
+  border-radius:20px;padding:2px 10px;margin-bottom:8px;letter-spacing:.08em;text-transform:uppercase}
+.tblwrap{overflow-x:auto;background:var(--panel);border:1px solid var(--line);
+  border-radius:10px;margin:14px 0 6px}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th{font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--mut);
+  text-align:left;padding:10px 12px;border-bottom:1px solid var(--line2);white-space:nowrap}
+td{padding:9px 12px;border-bottom:1px solid #23271f;white-space:nowrap}
+tr:last-child td{border-bottom:none}
+tbody tr:nth-child(even){background:#171a14}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+td.strong{font-weight:600}
+.caption{color:var(--dim);font-size:12px;margin:2px 0 20px}
+.pill{display:inline-block;font-size:11px;border-radius:20px;padding:1px 9px;font-weight:600}
+.pill.ok{color:var(--green);border:1px solid #2c5c33}
+.pill.idle{color:var(--mut);border:1px solid var(--line2)}
+.btn{display:inline-block;background:var(--amber);color:#131512;font-weight:700;
+  border-radius:8px;padding:12px 20px;font-size:15px}
+.btn:hover{filter:brightness(1.08);text-decoration:none}
+.btn.ghost{background:transparent;color:var(--amber);border:1px solid var(--amber-dim)}
+.btnrow{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
+.price{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:20px}
+.price .amt{font-size:30px;font-weight:800;color:var(--amber)}
+.price .per{color:var(--mut);font-size:13px}
+.price ul{margin:12px 0 16px;padding-left:18px;color:var(--mut);font-size:14px}
+.price li{margin:5px 0}
+.price .pick{color:var(--amber);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+  border:1px solid var(--amber-dim);border-radius:20px;padding:2px 10px;display:inline-block;margin-bottom:8px}
+.plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px;align-items:start}
+.alerts{list-style:none;margin:14px 0;padding:0}
+.alerts li{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--amber);
+  border-radius:8px;padding:12px 14px;margin-bottom:10px;font-size:14px;color:var(--mut)}
+.alerts li b{color:var(--ink)}
+footer.site{border-top:1px solid var(--line);margin-top:30px;padding:26px 0 40px;color:var(--dim);font-size:13px}
+footer.site a{color:var(--mut)}
+.note{background:var(--panel2);border:1px dashed var(--line2);border-radius:8px;
+  padding:12px 14px;color:var(--mut);font-size:13px;margin:16px 0}
+@media(max-width:720px){
+  h1{font-size:26px}.hero{padding:36px 0 20px}
+  nav a{margin-left:12px;font-size:12px}
+  .btn{display:block;text-align:center;margin-bottom:10px}
+  .btnrow{display:block}
+}
+</style>
+</head>
+<body>
+<header class="site"><div class="wrap">
+  <div class="brand">PELLET MARKET MONITOR<small>US wood-pellet market intelligence</small></div>
+  
+    <nav>
+      <a href="../index.html">Overview</a>
+      <a href="../sample/sample-digest.html">Sample digest</a>
+      <a href="../sample/sample-milldb.html">Sample mill DB</a>
+      <a href="../sample/sample-eubench.html">Sample EU benchmarks</a>
+      <a href="../index.html#pricing">Pricing</a>
+    </nav>
+</div></header>
+
+<section class="hero" style="padding-bottom:8px"><div class="wrap">
+  <div class="kicker">Sample · EU benchmark series</div>
+  <h1 style="font-size:28px">EU pellet benchmarks — sample</h1>
+  <p class="sub" style="font-size:15px">The EU side of the harmonized US+EU view: DEPV German
+  retail prices and BaltPool Baltic industrial spot, as they appear in the weekly digest.
+  EIA-63C data through May 2026 (report released August 13, 2026) · DEPV 2026-08 · BaltPool 2026-09-01 · UN Comtrade 2024 annual · all series fetched 2026-09-03.</p>
+</div></section>
+
+<section class="sect" style="border-top:none;padding-top:10px"><div class="wrap">
+  <h2>DEPV pelletpreis — Germany national, €/ton</h2>
+  <div class="tblwrap"><table>
+    <thead><tr><th>Month</th><th class="num">DEPV 6t</th><th class="num">DEPV 26t</th></tr></thead>
+    <tbody>
+<tr><td class='strong'>2025-07</td><td class='num'>282.89</td><td class='num'>267.95</td></tr>
+<tr><td class='strong'>2025-08</td><td class='num'>290.49</td><td class='num'>276.33</td></tr>
+<tr><td class='strong'>2025-09</td><td class='num'>313.12</td><td class='num'>297.34</td></tr>
+<tr><td class='strong'>2025-10</td><td class='num'>342.29</td><td class='num'>327.63</td></tr>
+<tr><td class='strong'>2025-11</td><td class='num'>366.93</td><td class='num'>350.14</td></tr>
+<tr><td class='strong'>2025-12</td><td class='num'>371.46</td><td class='num'>354.41</td></tr>
+<tr><td class='strong'>2026-01</td><td class='num'>378.81</td><td class='num'>364.41</td></tr>
+<tr><td class='strong'>2026-02</td><td class='num'>395.07</td><td class='num'>381.19</td></tr>
+<tr><td class='strong'>2026-03</td><td class='num'>391.78</td><td class='num'>377.26</td></tr>
+<tr><td class='strong'>2026-04</td><td class='num'>378.61</td><td class='num'>365.82</td></tr>
+<tr><td class='strong'>2026-05</td><td class='num'>362.70</td><td class='num'>347.46</td></tr>
+<tr><td class='strong'>2026-06</td><td class='num'>352.12</td><td class='num'>337.03</td></tr>
+<tr><td class='strong'>2026-07</td><td class='num'>362.70</td><td class='num'>350.30</td></tr>
+<tr><td class='strong'>2026-08</td><td class='num'>399.74</td><td class='num'>383.40</td></tr>
+    </tbody>
+  </table></div>
+  <p class="caption">Latest month 2026-08: 6t €399.74 · 26t €383.40.
+  Monthly series; regional detail below. Source: DEPV (Deutscher Energieholz- und
+  Pellet-Verband).</p>
+
+  <h2>DEPV regional detail — 2026-08, €/ton</h2>
+  <div class="tblwrap"><table>
+    <thead><tr><th>Region / delivery size</th><th class="num">€/ton</th></tr></thead>
+    <tbody>
+<tr><td class='strong'>Süd (3 t)</td><td class='num'>414.13</td></tr>
+<tr><td class='strong'>Mitte (3 t)</td><td class='num'>410.36</td></tr>
+<tr><td class='strong'>Nord/Ost (3 t)</td><td class='num'>407.33</td></tr>
+<tr><td class='strong'>Süd (6 t)</td><td class='num'>401.36</td></tr>
+<tr><td class='strong'>Mitte (6 t)</td><td class='num'>395.30</td></tr>
+<tr><td class='strong'>Nord/Ost (6 t)</td><td class='num'>391.77</td></tr>
+<tr><td class='strong'>Süd (26 t)</td><td class='num'>388.24</td></tr>
+<tr><td class='strong'>Mitte (26 t)</td><td class='num'>376.00</td></tr>
+<tr><td class='strong'>Nord/Ost (26 t)</td><td class='num'>379.76</td></tr>
+    </tbody>
+  </table></div>
+  <p class="caption">Süd / Mitte / Nord-Ost = South / Central / North-East Germany, by delivered
+  quantity (3 t bagged, 6 t, 26 t loose).</p>
+
+  <h2>BaltPool spot — €/MWh, last 13 weekly prints</h2>
+  <div class="tblwrap"><table>
+    <thead><tr><th>Week</th><th class="num">€/MWh</th><th class="num">WoW</th></tr></thead>
+    <tbody>
+<tr><td class='strong'>2026-06-09</td><td class='num'>23.49</td><td class='num'><span style="color:var(--dim)">—</span></td></tr>
+<tr><td class='strong'>2026-06-16</td><td class='num'>24.01</td><td class='num'><span style="color:#39b54a;font-weight:600">▲ 2.2%</span></td></tr>
+<tr><td class='strong'>2026-06-23</td><td class='num'>24.59</td><td class='num'><span style="color:#39b54a;font-weight:600">▲ 2.4%</span></td></tr>
+<tr><td class='strong'>2026-06-30</td><td class='num'>24.45</td><td class='num'><span style="color:#d95c4a;font-weight:600">▼ 0.6%</span></td></tr>
+<tr><td class='strong'>2026-07-08</td><td class='num'>25.01</td><td class='num'><span style="color:#39b54a;font-weight:600">▲ 2.3%</span></td></tr>
+<tr><td class='strong'>2026-07-14</td><td class='num'>24.79</td><td class='num'><span style="color:#d95c4a;font-weight:600">▼ 0.9%</span></td></tr>
+<tr><td class='strong'>2026-07-21</td><td class='num'>26.48</td><td class='num'><span style="color:#39b54a;font-weight:600">▲ 6.8%</span></td></tr>
+<tr><td class='strong'>2026-07-28</td><td class='num'>26.80</td><td class='num'><span style="color:#39b54a;font-weight:600">▲ 1.2%</span></td></tr>
+<tr><td class='strong'>2026-08-04</td><td class='num'>26.44</td><td class='num'><span style="color:#d95c4a;font-weight:600">▼ 1.3%</span></td></tr>
+<tr><td class='strong'>2026-08-11</td><td class='num'>27.22</td><td class='num'><span style="color:#39b54a;font-weight:600">▲ 3.0%</span></td></tr>
+<tr><td class='strong'>2026-08-18</td><td class='num'>27.03</td><td class='num'><span style="color:#d95c4a;font-weight:600">▼ 0.7%</span></td></tr>
+<tr><td class='strong'>2026-08-25</td><td class='num'>27.93</td><td class='num'><span style="color:#39b54a;font-weight:600">▲ 3.3%</span></td></tr>
+<tr><td class='strong'>2026-09-01</td><td class='num'>29.46</td><td class='num'><span style="color:#39b54a;font-weight:600">▲ 5.5%</span></td></tr>
+    </tbody>
+  </table></div>
+  <p class="caption">Series in the dataset runs 2025-03-12 → 2026-09-01
+  (78 weekly prints). 12-month range: €17.94 –
+  €40.09/MWh. Source: BaltPool.</p>
+
+  <div class="note"><b>Why both matter to a US-market watcher:</b> DEPV is the German retail
+  demand signal; BaltPool is the Baltic utility-grade price that industrial export flows price
+  against. The subscription puts both next to US export prices (EIA-63C Table 8:
+  $205.71/st in May 2026) in one weekly table.</div>
+
+  <div class="btnrow">
+    <a class="btn" href="mailto:njjones1999@gmail.com?subject=Subscribe%20%E2%80%94%20Pellet%20Market%20Monitor%20%28%2449/mo%29&body=I%20reviewed%20the%20EU%20benchmark%20sample%20and%20would%20like%20to%20subscribe%20at%20%2449/month.">
+      Get this every week — $49/mo</a>
+    <a class="btn ghost" href="../index.html#pricing">Pricing</a>
+  </div>
+</div></section>
+
+
+<footer class="site"><div class="wrap">
+  <b style="color:var(--mut)">Scriptores Helm LLC</b> · Mississippi, USA<br>
+  Data sources: EIA · DEPV · BaltPool · ENplus · UN Comtrade — all public sources; the value added is harmonization,
+  monitoring, and alerting.<br>
+  Contact: <a href="mailto:njjones1999@gmail.com">njjones1999@gmail.com</a> ·
+  Sample pages: <a href="../sample/sample-digest.html">digest</a> ·
+  <a href="../sample/sample-milldb.html">mill DB</a> ·
+  <a href="../sample/sample-eubench.html">EU benchmarks</a>
+</div></footer>
+
+</body>
+</html>
