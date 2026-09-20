@@ -1,0 +1,53 @@
+period,region,series_or_feedstock,price,unit,production_tons,source,kind
+01,All destinations,exports,20716.0,short_tons,844937.0,eia63c_t8,exports
+01,US,Roundwood/pulpwood,2540.0,usd_cents_per_ton,,eia63c_t3,feedstock_cost
+01,US,Sawmill residuals,3538.0,usd_cents_per_ton,,eia63c_t3,feedstock_cost
+01,US,Wood product manufacturing residuals,3955.0,usd_cents_per_ton,,eia63c_t3,feedstock_cost
+01,US,Other residuals,2909.0,usd_cents_per_ton,,eia63c_t3,feedstock_cost
+01,East,"Wood Pellets, premium/standard",,short_tons,85841.0,eia63c_t4,production_tons
+01,South,"Wood Pellets, premium/standard",,short_tons,16473.0,eia63c_t4,production_tons
+01,South,"Wood Pellets, utility",,short_tons,725313.0,eia63c_t4,production_tons
+01,U.S. Total,"Wood Pellets, premium/standard",,short_tons,126851.0,eia63c_t4,production_tons
+01,U.S. Total,"Wood Pellets, utility",,short_tons,725313.0,eia63c_t4,production_tons
+01,West,"Wood Pellets, premium/standard",,short_tons,24537.0,eia63c_t4,production_tons
+02,All destinations,exports,20575.0,short_tons,589865.0,eia63c_t8,exports
+02,US,Roundwood/pulpwood,2582.0,usd_cents_per_ton,,eia63c_t3,feedstock_cost
+02,US,Sawmill residuals,3635.0,usd_cents_per_ton,,eia63c_t3,feedstock_cost
+02,US,Wood product manufacturing residuals,3641.0,usd_cents_per_ton,,eia63c_t3,feedstock_cost
+02,US,Other residuals,2954.0,usd_cents_per_ton,,eia63c_t3,feedstock_cost
+02,East,"Wood Pellets, premium/standard",,short_tons,82341.0,eia63c_t4,production_tons
+02,South,"Wood Pellets, premium/standard",,short_tons,16187.0,eia63c_t4,production_tons
+02,South,"Wood Pellets, utility",,short_tons,687035.0,eia63c_t4,production_tons
+02,U.S. Total,"Wood Pellets, premium/standard",,short_tons,122073.0,eia63c_t4,production_tons
+02,U.S. Total,"Wood Pellets, utility",,short_tons,687035.0,eia63c_t4,production_tons
+02,West,"Wood Pellets, premium/standard",,short_tons,23545.0,eia63c_t4,production_tons
+03,All destinations,exports,20730.0,short_tons,740367.0,eia63c_t8,exports
+03,US,Roundwood/pulpwood,2645.0,usd_cents_per_ton,,eia63c_t3,feedstock_cost
+03,US,Sawmill residuals,3555.0,usd_cents_per_ton,,eia63c_t3,feedstock_cost
+03,US,Wood product manufacturing residuals,3976.0,usd_cents_per_ton,,eia63c_t3,feedstock_cost
+03,East,"Wood Pellets, premium/standard",,short_tons,85817.0,eia63c_t4,production_tons
+03,South,"Wood Pellets, premium/standard",,short_tons,13767.0,eia63c_t4,production_tons
+03,South,"Wood Pellets, utility",,short_tons,842187.0,eia63c_t4,production_tons
+03,U.S. Total,"Wood Pellets, premium/standard",,short_tons,122913.0,eia63c_t4,production_tons
+03,U.S. Total,"Wood Pellets, utility",,short_tons,842187.0,eia63c_t4,production_tons
+03,West,"Wood Pellets, premium/standard",,short_tons,23329.0,eia63c_t4,production_tons
+04,All destinations,exports,20814.0,short_tons,845914.0,eia63c_t8,exports
+04,US,Roundwood/pulpwood,2574.0,usd_cents_per_ton,,eia63c_t3,feedstock_cost
+04,US,Sawmill residuals,3461.0,usd_cents_per_ton,,eia63c_t3,feedstock_cost
+04,US,Wood product manufacturing residuals,4301.0,usd_cents_per_ton,,eia63c_t3,feedstock_cost
+04,East,"Wood Pellets, premium/standard",,short_tons,78650.0,eia63c_t4,production_tons
+04,South,"Wood Pellets, premium/standard",,short_tons,13295.0,eia63c_t4,production_tons
+04,South,"Wood Pellets, utility",,short_tons,758438.0,eia63c_t4,production_tons
+04,U.S. Total,"Wood Pellets, premium/standard",,short_tons,119454.0,eia63c_t4,production_tons
+04,U.S. Total,"Wood Pellets, utility",,short_tons,758438.0,eia63c_t4,production_tons
+04,West,"Wood Pellets, premium/standard",,short_tons,27509.0,eia63c_t4,production_tons
+05,All destinations,exports,20571.0,short_tons,808518.0,eia63c_t8,exports
+05,US,Roundwood/pulpwood,2602.0,usd_cents_per_ton,,eia63c_t3,feedstock_cost
+05,US,Sawmill residuals,3479.0,usd_cents_per_ton,,eia63c_t3,feedstock_cost
+05,US,Wood product manufacturing residuals,4801.0,usd_cents_per_ton,,eia63c_t3,feedstock_cost
+05,East,"Wood Pellets, premium/standard",,short_tons,85595.0,eia63c_t4,production_tons
+05,South,"Wood Pellets, premium/standard",,short_tons,13792.0,eia63c_t4,production_tons
+05,South,"Wood Pellets, utility",,short_tons,803636.0,eia63c_t4,production_tons
+05,U.S. Total,"Wood Pellets, premium/standard",,short_tons,127679.0,eia63c_t4,production_tons
+05,U.S. Total,"Wood Pellets, utility",,short_tons,803636.0,eia63c_t4,production_tons
+05,West,"Wood Pellets, premium/standard",,short_tons,28292.0,eia63c_t4,production_tons

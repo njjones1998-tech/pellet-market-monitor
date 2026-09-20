@@ -1,0 +1,41 @@
+{
+  "exports": [
+    {
+      "period": "01",
+      "quantity_tons": 844937.0,
+      "value_usd": 175037148.92,
+      "price": 20716.0
+    },
+    {
+      "period": "02",
+      "quantity_tons": 589865.0,
+      "value_usd": 121364723.75,
+      "price": 20575.0
+    },
+    {
+      "period": "03",
+      "quantity_tons": 740367.0,
+      "value_usd": 153478079.1,
+      "price": 20730.0
+    },
+    {
+      "period": "04",
+      "quantity_tons": 845914.0,
+      "value_usd": 176068539.96,
+      "price": 20814.0
+    },
+    {
+      "period": "05",
+      "quantity_tons": 808518.0,
+      "value_usd": 166320237.78,
+      "price": 20571.0
+    }
+  ],
+  "producer_counts": {
+    "n": 2212,
+    "c": 60
+  },
+  "active_producers": {
+    "n": 1420
+  }
+}

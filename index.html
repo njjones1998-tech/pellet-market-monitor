@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Pellet Market Monitor — constant US + EU pellet price monitoring, alerts when your market moves</title>
+<title>Pellet Market Monitor — dated research sample</title>
 <style>
 :root{
   --bg:#131512; --panel:#1b1e19; --panel2:#22261f; --line:#2c3129; --line2:#3a4034;
@@ -95,67 +95,32 @@ footer.site a{color:var(--mut)}
       <a href="sample/sample-digest.html">Sample digest</a>
       <a href="sample/sample-milldb.html">Sample mill DB</a>
       <a href="sample/sample-eubench.html">Sample EU benchmarks</a>
-      <a href="index.html#pricing">Pricing</a>
+      <a href="index.html#pricing">Availability</a>
     </nav>
 </div></header>
+<div class="wrap"><div class="note"><b>Dated sample, corrected September 20, 2026.</b> Original data snapshot: September 3. Paid orders and automated subscriber delivery are unavailable. Earlier wording incorrectly described wood chips as a pellet benchmark and implied subscriber alerts had been sent.</div></div>
 
 <section class="hero"><div class="wrap">
-  <div class="kicker">Weekly US + EU wood-pellet market monitoring</div>
-  <h1>Constant monitoring of US pellet market pricing.<br>Alerts when your market moves.</h1>
-  <p class="sub">Production, feedstock costs, export prices, and EU benchmarks — tracked every
-  week so you hear about the move from us, not from your supplier's next quote.</p>
-  <div class="btnrow">
-    <a class="btn" href="mailto:njjones1999@gmail.com?subject=Sample%20digest%20request%20%E2%80%94%20Pellet%20Market%20Monitor&body=Please%20send%20me%20the%20latest%20sample%20digest%20of%20the%20Pellet%20Market%20Monitor.">
-      Request a sample digest — free</a>
-    <a class="btn ghost" href="#pricing">See pricing</a>
-  </div>
-
-  <!-- PAYMENTS TODO (post-approval): hero CTA above stays mailto until Stripe is wired.
-       Stripe Checkout links will replace the $99 pack CTA in the Pricing section (search
-       "PAYMENTS TODO" below). No other payment paths exist on this page. -->
-
-  <div class="stats">
-    <div class="stat"><b>87</b><span>US pellet mills tracked (EIA-63C)</span></div>
-    <div class="stat"><b>13.1M</b><span>tons/yr listed mill capacity</span></div>
-    <div class="stat"><b>2,212</b><span>ENplus producers watched (1,420 active, 60 countries)</span></div>
-    <div class="stat"><b>Weekly</b><span>digest + threshold price alerts</span></div>
-  </div>
+  <div class="kicker">Scriptores Helm · research prototype</div>
+  <h1>Wood-pellet market data,<br>with the source context attached.</h1>
+  <p class="sub">Explore a dated sample of US production, feedstock costs, exports and German pellet prices. Lithuanian wood-chip prices are included separately as biomass context.</p>
+  <div class="note"><b>Sample only.</b> These pages retain data collected September 3, 2026; they are not a live feed. Descriptions were corrected September 20. Paid orders, weekly email delivery and automated alerts are unavailable.</div>
+  <div class="btnrow"><a class="btn" href="sample/sample-digest.html">Read the free sample</a>
+  <a class="btn ghost" href="#pricing">Product availability</a></div>
 </div></section>
-
-<section class="sect" id="get"><div class="wrap">
-  <h2>What subscribers get</h2>
-  <p class="lead">One weekly email that answers the only question that matters: which numbers
-  moved, and by how much.</p>
+<section class="sect"><div class="wrap">
+  <h2>How to read this sample</h2>
+  <p class="lead">Use it to inspect reported supply, costs and trade. Each series has its own reporting period and definition; this is not a landed-cost or export-parity calculator.</p>
   <div class="cards">
-    <div class="card"><span class="tag">Weekly digest</span><h3>Every series, every week</h3>
-      <p>US production by region and grade, feedstock costs (roundwood, sawmill residuals,
-      wood-product residuals), export volume and price, retail by region, and the EU side:
-      DEPV (Germany) and BaltPool (Baltic spot).</p></div>
-    <div class="card"><span class="tag">Alerts</span><h3>Price alerts on threshold moves</h3>
-      <p>You set the thresholds — series, direction, percentage. When a series crosses the
-      line (week-over-week or month-over-month), you get a short email with the move and the
-      underlying numbers. No dashboard to babysit.</p></div>
-    <div class="card"><span class="tag">US + EU</span><h3>One harmonized view</h3>
-      <p>US export prices in $/ton next to DEPV in €/ton and BaltPool in €/MWh, on the same
-      dates — so a German retail move or a Baltic utility tender is visible against US export
-      economics in one table.</p></div>
-    <div class="card"><span class="tag">Buyer map</span><h3>Who buys, where</h3>
-      <p>Export destinations with volumes and implied $/ton (UN Comtrade HS 4401.31), plus an
-      ENplus producer map by country — the demand side and the supplier universe in one file.</p></div>
-    <div class="card"><span class="tag">Delivery</span><h3>Email + CSV</h3>
-      <p>The digest lands as email with CSV attachments of every table. Machine-readable by
-      default; paste straight into your own models or procurement sheets.</p></div>
-    <div class="card"><span class="tag">Coverage</span><h3>Public sources, verified</h3>
-      <p>Built only from public data — EIA-63C, DEPV, BaltPool, the ENplus directory, UN
-      Comtrade — reconciled and drift-checked every fetch. We claim no exclusivity on the
-      sources; the product is the monitoring and the alerts.</p></div>
+    <div class="card"><h3>US monthly statistics</h3><p>EIA production, feedstock costs and export averages. Reporting lags mean these are historical observations, not current supplier quotes.</p></div>
+    <div class="card"><h3>Different products and price bases</h3><p>German delivered pellet prices and Lithuanian wood-chip prices are separate series. Currency, mass, energy content, grade and delivery costs have not been normalized for comparison.</p></div>
+    <div class="card"><h3>Trade destinations and suppliers</h3><p>UN Comtrade describes country-level exports. ENplus lists certified producers; it does not establish which companies buy US pellets.</p></div>
   </div>
 </div></section>
-
 <section class="sect" id="data"><div class="wrap">
-  <h2>The data, live samples</h2>
-  <p class="lead">Real numbers from the current dataset (as of EIA-63C data through May 2026 (report released August 13, 2026) · DEPV 2026-08 · BaltPool 2026-09-01 · UN Comtrade 2024 annual · all series fetched 2026-09-03).
-  Full pages: <a href="sample/sample-digest.html">sample weekly digest</a> ·
+  <h2>The dated sample</h2>
+  <p class="lead">Source data retained for this sample ( EIA-63C data through May 2026 (report released August 13, 2026) · DEPV 2026-08 · BaltPool 2026-09-01 · UN Comtrade 2024 annual · sample inputs fetched 2026-09-03; descriptions corrected 2026-09-20).
+  Full pages: <a href="sample/sample-digest.html">sample digest</a> ·
   <a href="sample/sample-milldb.html">sample mill database</a> ·
   <a href="sample/sample-eubench.html">sample EU benchmarks</a>.</p>
 
@@ -175,10 +140,9 @@ footer.site a{color:var(--mut)}
 <tr><td class='strong'>Fram Renewable Fuels - Hazlehurst</td><td>GA</td><td>South</td><td><span class="pill ok">Operating</span></td><td class='num'>350,000</td></tr>
     </tbody>
   </table></div>
-  <p class="caption">Source: EIA-63C Table 1, fetched 2026-09-03. Full 87-mill table with region,
-  status, and capacity is in the subscription digest and the $99 dataset pack.</p>
+  <p class="caption">Source: EIA-63C Table 1, fetched 2026-09-03. Selected mills exclude Enviva; totals cover all listed mills. Status is as reported in that snapshot.</p>
 
-  <h3>US production &amp; exports — May 2026 <span style="color:var(--dim);font-weight:400">(latest EIA month; prior April 2026 for comparison)</span></h3>
+  <h3>US production &amp; exports — May 2026 <span style="color:var(--dim);font-weight:400">(sample reporting month; prior April 2026 for comparison)</span></h3>
   <div class="tblwrap"><table>
     <thead><tr><th>Series</th><th class="num">May 2026</th><th class="num">April 2026</th><th class="num">Change</th></tr></thead>
     <tbody>
@@ -205,12 +169,12 @@ footer.site a{color:var(--mut)}
   3,829,601 st exported · $792.3M export value · $206.88/st average.
   Source: EIA-63C Tables 3/4/8.</p>
 
-  <h3>EU benchmarks — latest prints</h3>
+  <h3>German pellets and separate wood-chip context — sample periods</h3>
   <div class="cards">
     <div class="card">
-      <h3>DEPV — German retail index, 2026-08</h3>
+      <h3>DEPV — German delivered pellet contract prices (net), 2026-08</h3>
       <div class="tblwrap" style="border:none;margin:0;background:transparent"><table>
-        <thead><tr><th>Series</th><th class="num">€/ton</th><th class="num">MoM</th></tr></thead>
+        <thead><tr><th>Series</th><th class="num">€/metric tonne</th><th class="num">MoM</th></tr></thead>
         <tbody>
           <tr><td class="strong">DEPV 6t (national)</td><td class="num">399.74</td>
               <td class="num"><span style="color:#39b54a;font-weight:600">▲ 10.2%</span></td></tr>
@@ -222,7 +186,7 @@ footer.site a{color:var(--mut)}
       Source: DEPV pelletpreis.</p>
     </div>
     <div class="card">
-      <h3>BaltPool — Baltic industrial spot</h3>
+      <h3>Baltpool — Lithuanian wood-chip SPOT</h3>
       <div class="tblwrap" style="border:none;margin:0;background:transparent"><table>
         <thead><tr><th>Week</th><th class="num">€/MWh</th><th class="num">WoW</th></tr></thead>
         <tbody>
@@ -234,14 +198,14 @@ footer.site a{color:var(--mut)}
 <tr><td>2026-09-01</td><td class='num strong'>€29.46</td><td class='num'><span style="color:#39b54a;font-weight:600">▲ 5.5%</span></td></tr>
         </tbody>
       </table></div>
-      <p class="caption">Latest print 2026-09-01: €29.46/MWh.
+      <p class="caption">Sample observation 2026-09-01: €29.46/MWh.
       Source: BaltPool spot.</p>
     </div>
   </div>
 
   <h3>Top US export destinations, 2024 <span style="color:var(--dim);font-weight:400">(UN Comtrade, HS 4401.31)</span></h3>
   <div class="tblwrap"><table>
-    <thead><tr><th>Destination</th><th class="num">Volume (tons)</th><th class="num">Value</th><th class="num">Avg $/ton</th></tr></thead>
+    <thead><tr><th>Destination</th><th class="num">Volume (metric tonnes)</th><th class="num">Value</th><th class="num">Customs unit value ($/t)</th></tr></thead>
     <tbody>
 <tr><td class='strong'>United Kingdom</td><td class='num'>7,004,305</td><td class='num'>$1,342.1M</td><td class='num'>$191.61</td></tr>
 <tr><td class='strong'>Japan</td><td class='num'>1,150,033</td><td class='num'>$195.6M</td><td class='num'>$170.05</td></tr>
@@ -250,95 +214,33 @@ footer.site a{color:var(--mut)}
 <tr><td class='strong'>World (all destinations)</td><td class='num'>10,004,015</td><td class='num'>$1,859.2M</td><td class='num'>$185.85</td></tr>
     </tbody>
   </table></div>
-  <p class="caption">2024 annual totals. The buyer map (59 countries, ENplus producer counts
-  by destination) ships with the subscription and the dataset pack.</p>
+  <p class="caption">2024 annual totals for HS 440131 only. Volume is metric tonnes; unit value is reported customs value divided by net weight, not a purchase quote. Country totals do not identify individual buyers.</p>
 </div></section>
 
 <section class="sect" id="pricing"><div class="wrap">
-  <h2>Pricing</h2>
-  <p class="lead">Cancel any time. The digest and alerts arrive by email; every table ships as CSV.</p>
-
-  <!-- ============================================================
-       PAYMENTS TODO — WHERE STRIPE GOES (after operator approval):
-       Replace each mailto CTA below with a Stripe Checkout payment link:
-         1. Monitoring monthly  — $49/mo   recurring  -> [STRIPE_LINK_MONTHLY]
-         2. Monitoring annual   — $499/yr  recurring  -> [STRIPE_LINK_ANNUAL]
-         3. Dataset pack        — $99 one-off         -> [STRIPE_LINK_PACK]
-       Keep the mailto links as the fallback line under each button
-       ("or email ...") while Stripe is in test mode. Until then the
-       mailto CTAs are the only order path. No JS is needed for
-       Stripe Checkout payment links — a plain <a href> is enough.
-       ============================================================ -->
-
-  <div class="plans">
-    <div class="price">
-      <span class="pick">Subscription</span>
-      <div class="amt">$49<span style="font-size:15px;color:var(--mut)">/mo</span></div>
-      <div style="color:var(--mut);font-size:13px">or $499/yr (2 months free)</div>
-      <ul>
-        <li>Weekly digest: US production, feedstock costs, retail by region, export prices, EU benchmarks (DEPV + BaltPool)</li>
-        <li>Threshold price alerts — your series, your thresholds, by email</li>
-        <li>Harmonized US + EU view and the buyer map</li>
-        <li>Every table as CSV attachment</li>
-      </ul>
-      <a class="btn" href="mailto:njjones1999@gmail.com?subject=Subscription%20%E2%80%94%20Pellet%20Market%20Monitor%20%28%2449/mo%29&body=I%20would%20like%20to%20subscribe%20at%20%2449/month.%20Please%20send%20payment%20details.">
-        Subscribe — $49/mo</a>
-      <a class="btn ghost" style="margin-top:10px" href="mailto:njjones1999@gmail.com?subject=Subscription%20%E2%80%94%20Pellet%20Market%20Monitor%20%28%24499/yr%29&body=I%20would%20like%20to%20subscribe%20at%20%24499/year.%20Please%20send%20payment%20details.">
-        Subscribe — $499/yr</a>
-    </div>
-    <div class="price">
-      <span class="pick">One-off</span>
-      <div class="amt">$99</div>
-      <div style="color:var(--mut);font-size:13px">dataset pack, single purchase</div>
-      <ul>
-        <li>All 87 US mills with region, status, and capacity</li>
-        <li>US production / feedstock / export price series (10-year monthly depth as context)</li>
-        <li>EU benchmarks: DEPV + BaltPool history</li>
-        <li>Buyer map: 38 export destinations with volumes</li>
-        <li>Delivered as CSV + Excel</li>
-      </ul>
-      <a class="btn" href="mailto:njjones1999@gmail.com?subject=Dataset%20pack%20order%20%E2%80%94%20%2499%20%E2%80%94%20Pellet%20Market%20Monitor&body=I%20would%20like%20to%20buy%20the%20%2499%20dataset%20pack.%20Please%20send%20payment%20details.">
-        Buy dataset pack — $99</a>
-    </div>
-    <div class="price">
-      <span class="pick">Free</span>
-      <div class="amt">$0</div>
-      <div style="color:var(--mut);font-size:13px">sample digest + sample pages</div>
-      <ul>
-        <li>One full sample digest built from the current data</li>
-        <li>Sample mill database and EU benchmark pages</li>
-        <li>No obligation — see exactly what a week looks like</li>
-      </ul>
-      <a class="btn ghost" href="mailto:njjones1999@gmail.com?subject=Sample%20digest%20request%20%E2%80%94%20Pellet%20Market%20Monitor&body=Please%20send%20me%20the%20latest%20sample%20digest%20of%20the%20Pellet%20Market%20Monitor.">
-        Request sample digest</a>
-      <p style="margin-top:12px"><a href="sample/sample-digest.html" style="color:var(--amber)">View the sample pages online →</a></p>
-    </div>
+  <h2>Product availability</h2>
+  <p class="lead">The sample is free to read. Paid orders are paused while source definitions and delivery are validated.</p>
+  <div class="cards">
+    <div class="card"><h3>Free sample · available</h3><p>Read the digest, mill extract and benchmark definitions. The sample is a dated snapshot, not an ongoing service.</p></div>
+    <div class="card"><h3>Subscription · unavailable</h3><p>The previously advertised $49/month or $499/year service is not accepting orders. Weekly subscriber emails and automated alerts have not been implemented.</p></div>
+    <div class="card"><h3>Dataset pack · paused</h3><p>The previously advertised $99 pack is under review. Historical coverage, product labels and delivery contents must be confirmed before a sale.</p></div>
   </div>
-  <div class="note">Orders and sample requests currently go straight to
-  <a href="mailto:njjones1999@gmail.com" style="color:var(--amber)">njjones1999@gmail.com</a>; you get a reply with payment
-  details and delivery within one business day. Self-serve checkout is being added.</div>
+  <div class="btnrow"><a class="btn" href="mailto:njjones1999@gmail.com?subject=Sample%20feedback%20%E2%80%94%20Pellet%20Market%20Monitor&body=Which%20table%20would%20help%20your%20work%2C%20and%20what%20information%20is%20missing%3F">Share sample feedback</a></div>
 </div></section>
 
-<section class="sect" id="who"><div class="wrap">
-  <h2>Who it is for</h2>
-  <p class="lead">Built for people who price, buy, sell, or finance wood pellets and need the
-  week's numbers before the market tells them.</p>
-  <div class="cards">
-    <div class="card"><h3>EU buyers &amp; procurement teams</h3><p>Track US export price direction
-      and Baltic utility spot against your contract renewals — with alerts when either moves.</p></div>
-    <div class="card"><h3>Export traders &amp; brokers</h3><p>See production, feedstock cost
-      pressure, and destination volumes in one view; get pinged when a benchmark crosses your
-      threshold.</p></div>
-    <div class="card"><h3>Analysts &amp; investors</h3><p>A clean weekly series set — US supply,
-      US export pricing, EU demand-side benchmarks — delivered as data, not a PDF to re-type.</p></div>
-  </div>
+
+<section class="sect"><div class="wrap"><h2>Sources and definitions</h2>
+<p><a href="https://www.eia.gov/biofuels/biomass/?year=2026&amp;month=5">EIA May 2026 report</a>: Tables 1, 3, 4 and 8; st means short tons. EIA export value shown here is calculated as reported quantity × reported average price.</p>
+<p><a href="https://www.depv.de/pelletpreis/">DEPV contract-price definition</a>: ENplus A1, loose blown-in pellets, delivery within 50 km, incidental costs included, VAT excluded. 3/6/26 t are order quantities, not bag sizes.</p>
+<p><a href="https://www.baltpool.eu/wp-content/uploads/2026/06/baltpool-index-api-documentation.pdf">Baltpool index API reference</a>: displayed series uses type=spot and country=lt, in EUR/MWh. The separate wood-pellet type is wood_pellets_spot.</p>
+<p><a href="https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=842&amp;period=2024&amp;cmdCode=440131&amp;flowCode=X">UN Comtrade query</a>: US exports, 2024, HS 440131. Net weight divided by 1,000 yields metric tonnes; customs value divided by that weight yields unit value. Country labels beyond this selected table remain under review.</p>
+<p>Different periods, products and units remain separate. These tables do not establish a current purchase price, landed cost, arbitrage margin or list of buyers. Older source data may be revised by its publisher.</p>
 </div></section>
 
 
 <footer class="site"><div class="wrap">
   <b style="color:var(--mut)">Scriptores Helm LLC</b> · Mississippi, USA<br>
-  Data sources: EIA · DEPV · BaltPool · ENplus · UN Comtrade — all public sources; the value added is harmonization,
-  monitoring, and alerting.<br>
+  Dated public-source sample: EIA · DEPV · BaltPool · ENplus · UN Comtrade. Automated delivery and paid orders are unavailable.<br>
   Contact: <a href="mailto:njjones1999@gmail.com">njjones1999@gmail.com</a> ·
   Sample pages: <a href="sample/sample-digest.html">digest</a> ·
   <a href="sample/sample-milldb.html">mill DB</a> ·

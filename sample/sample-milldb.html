@@ -95,21 +95,19 @@ footer.site a{color:var(--mut)}
       <a href="../sample/sample-digest.html">Sample digest</a>
       <a href="../sample/sample-milldb.html">Sample mill DB</a>
       <a href="../sample/sample-eubench.html">Sample EU benchmarks</a>
-      <a href="../index.html#pricing">Pricing</a>
+      <a href="../index.html#pricing">Availability</a>
     </nav>
 </div></header>
+<div class="wrap"><div class="note"><b>Dated sample, corrected September 20, 2026.</b> Original data snapshot: September 3. Paid orders and automated subscriber delivery are unavailable. Earlier wording incorrectly described wood chips as a pellet benchmark and implied subscriber alerts had been sent.</div></div>
 
 <section class="hero" style="padding-bottom:8px"><div class="wrap">
   <div class="kicker">Sample · mill database extract</div>
   <h1 style="font-size:28px">US pellet mill database — sample</h1>
-  <p class="sub" style="font-size:15px">Top 15 of 87 tracked US mills by listed
-  annual capacity, 85 currently operating. Full file: all 87 mills with region,
-  state, operational status, capacity, source table, and fetch timestamp — CSV + Excel in the
-  dataset pack. Fetched 2026-09-03 from EIA-63C Table 1.</p>
+  <p class="sub" style="font-size:15px">Selected 15 of 87 listed US mills by annual capacity, excluding Enviva from the promotional extract. 85 were reported operating in the snapshot. This is not a current status check. Fetched 2026-09-03 from EIA-63C Table 1.</p>
 </div></section>
 
 <section class="sect" style="border-top:none;padding-top:10px"><div class="wrap">
-  <h2>Top 15 mills by capacity</h2>
+  <h2>Selected mills by listed capacity</h2>
   <div class="tblwrap"><table>
     <thead><tr><th>Mill</th><th>State</th><th>Region</th><th>Status</th>
       <th class="num">Capacity (tons/yr)</th></tr></thead>
@@ -132,7 +130,7 @@ footer.site a{color:var(--mut)}
     </tbody>
   </table></div>
 
-  <h2>Mills currently idle</h2>
+  <h2>Mills reported idle in the snapshot</h2>
   <div class="tblwrap"><table>
     <thead><tr><th>Mill</th><th>State</th><th>Status</th><th class="num">Capacity (tons/yr)</th></tr></thead>
     <tbody>
@@ -157,17 +155,24 @@ footer.site a{color:var(--mut)}
   as EIA publishes them. Capacity figures are EIA-listed nameplate, not verified output.</div>
 
   <div class="btnrow">
-    <a class="btn" href="mailto:njjones1999@gmail.com?subject=Dataset%20pack%20order%20%E2%80%94%20%2499%20%E2%80%94%20Pellet%20Market%20Monitor&body=I%20would%20like%20to%20buy%20the%20%2499%20dataset%20pack%20%28mill%20database%20%2B%20price%20history%20%2B%20buyer%20map%29.">
-      Buy the dataset pack — $99</a>
-    <a class="btn ghost" href="../index.html#pricing">Pricing</a>
+    <a class="btn" href="../index.html#pricing">Check product availability</a>
+    <a class="btn ghost" href="../index.html#pricing">Availability</a>
   </div>
+</div></section>
+
+
+<section class="sect"><div class="wrap"><h2>Sources and definitions</h2>
+<p><a href="https://www.eia.gov/biofuels/biomass/?year=2026&amp;month=5">EIA May 2026 report</a>: Tables 1, 3, 4 and 8; st means short tons. EIA export value shown here is calculated as reported quantity × reported average price.</p>
+<p><a href="https://www.depv.de/pelletpreis/">DEPV contract-price definition</a>: ENplus A1, loose blown-in pellets, delivery within 50 km, incidental costs included, VAT excluded. 3/6/26 t are order quantities, not bag sizes.</p>
+<p><a href="https://www.baltpool.eu/wp-content/uploads/2026/06/baltpool-index-api-documentation.pdf">Baltpool index API reference</a>: displayed series uses type=spot and country=lt, in EUR/MWh. The separate wood-pellet type is wood_pellets_spot.</p>
+<p><a href="https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=842&amp;period=2024&amp;cmdCode=440131&amp;flowCode=X">UN Comtrade query</a>: US exports, 2024, HS 440131. Net weight divided by 1,000 yields metric tonnes; customs value divided by that weight yields unit value. Country labels beyond this selected table remain under review.</p>
+<p>Different periods, products and units remain separate. These tables do not establish a current purchase price, landed cost, arbitrage margin or list of buyers. Older source data may be revised by its publisher.</p>
 </div></section>
 
 
 <footer class="site"><div class="wrap">
   <b style="color:var(--mut)">Scriptores Helm LLC</b> · Mississippi, USA<br>
-  Data sources: EIA · DEPV · BaltPool · ENplus · UN Comtrade — all public sources; the value added is harmonization,
-  monitoring, and alerting.<br>
+  Dated public-source sample: EIA · DEPV · BaltPool · ENplus · UN Comtrade. Automated delivery and paid orders are unavailable.<br>
   Contact: <a href="mailto:njjones1999@gmail.com">njjones1999@gmail.com</a> ·
   Sample pages: <a href="../sample/sample-digest.html">digest</a> ·
   <a href="../sample/sample-milldb.html">mill DB</a> ·

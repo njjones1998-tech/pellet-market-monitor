@@ -1,0 +1,88 @@
+region,state,company,status,annual_capacity_tpy,source,fetched_at
+East,IA,Westwind Logistics LLC,Currently Operating,10000,eia63c_t1,2026-09-03T23:19:26Z
+East,IN,"Koetter & Smith, Inc.",Currently Operating,2000,eia63c_t1,2026-09-03T23:19:26Z
+East,IN,Southern Indiana Hardwoods,Currently Operating,5000,eia63c_t1,2026-09-03T23:19:26Z
+East,ME,Lignetics Of Maine,Currently Operating,77000,eia63c_t1,2026-09-03T23:19:26Z
+East,ME,Maine Woods Pellet Company,Currently Operating,110000,eia63c_t1,2026-09-03T23:19:26Z
+East,ME,T & D Wood Energy,Currently Operating,37000,eia63c_t1,2026-09-03T23:19:26Z
+East,MI,Fiber By-Products-White Pigeon,Currently Operating,114000,eia63c_t1,2026-09-03T23:19:26Z
+East,MI,Michigan Wood Fuels,Currently Operating,50000,eia63c_t1,2026-09-03T23:19:26Z
+East,MI,Vulcan Wood Products,Currently Operating,9000,eia63c_t1,2026-09-03T23:19:26Z
+East,MO,Pennington Seed Inc.,Currently Operating,5000,eia63c_t1,2026-09-03T23:19:26Z
+East,MO,Smith Flooring,Currently Operating,12000,eia63c_t1,2026-09-03T23:19:26Z
+East,NH,Jaffrey Manufacturing Facility,Currently Operating,90000,eia63c_t1,2026-09-03T23:19:26Z
+East,NY,Arcade NY,Currently Operating,46574,eia63c_t1,2026-09-03T23:19:26Z
+East,NY,Curran Renewable Energy LLC,Currently Operating,120000,eia63c_t1,2026-09-03T23:19:26Z
+East,NY,Deposit NY Facility,Currently Operating,88000,eia63c_t1,2026-09-03T23:19:26Z
+East,NY,Schuyler Manufacturing Facility,Currently Operating,60000,eia63c_t1,2026-09-03T23:19:26Z
+East,OH,American Wood Fibers - Circleville,Currently Operating,45000,eia63c_t1,2026-09-03T23:19:26Z
+East,OH,Easy Heat Wood Pellets,Currently Operating,60000,eia63c_t1,2026-09-03T23:19:26Z
+East,OH,Sugar Creek Shavings,Currently Operating,2500,eia63c_t1,2026-09-03T23:19:26Z
+East,PA,Allegheny Pellet Corporation,Currently Operating,88000,eia63c_t1,2026-09-03T23:19:26Z
+East,PA,Barefoot Pellet Company,Currently Operating,70000,eia63c_t1,2026-09-03T23:19:26Z
+East,PA,"Energex American, Inc.",Currently Operating,125000,eia63c_t1,2026-09-03T23:19:26Z
+East,PA,Greene Team Pellet Fuel Company,Currently Operating,50000,eia63c_t1,2026-09-03T23:19:26Z
+East,PA,Ironstone Mills,Currently Operating,2000,eia63c_t1,2026-09-03T23:19:26Z
+East,PA,"Pellheat, Inc.",Currently Operating,5000,eia63c_t1,2026-09-03T23:19:26Z
+East,PA,"Penn Wood Products, Inc.",Currently Operating,9000,eia63c_t1,2026-09-03T23:19:26Z
+East,PA,Ulysses PA,Currently Operating,37153,eia63c_t1,2026-09-03T23:19:26Z
+East,VT,"Vermont Wood Pellet Company, LLC",Currently Operating,14000,eia63c_t1,2026-09-03T23:19:26Z
+East,WI,Dejno'S Inc.,Currently Operating,50000,eia63c_t1,2026-09-03T23:19:26Z
+East,WI,Indeck Ladysmith LLC,Currently Operating,90000,eia63c_t1,2026-09-03T23:19:26Z
+East,WI,"Marth Wood Shaving Supply, Inc. - Marathon",Currently Operating,30000,eia63c_t1,2026-09-03T23:19:26Z
+East,WI,"Marth Wood Shaving Supply, Inc. - Peshtigo",Currently Operating,55000,eia63c_t1,2026-09-03T23:19:26Z
+East,WI,Snow Timber Pellet,Currently Operating,5000,eia63c_t1,2026-09-03T23:19:26Z
+East,WV,Appalachian Wood Pellets,Currently Operating,50000,eia63c_t1,2026-09-03T23:19:26Z
+East,WV,Hamer Pellet Fuel,Currently Operating,72800,eia63c_t1,2026-09-03T23:19:26Z
+East,WV,Lignetics - Linn WV,Currently Operating,122880,eia63c_t1,2026-09-03T23:19:26Z
+South,AL,"Alabama Pellets, LLC-Aliceville",Currently Operating,358150,eia63c_t1,2026-09-03T23:19:26Z
+South,AL,"Alabama Pellets, LLC-Demopolis",Currently Operating,400439,eia63c_t1,2026-09-03T23:19:26Z
+South,AL,"Crossville Pellets, LLC",Currently Operating,110000,eia63c_t1,2026-09-03T23:19:26Z
+South,AR,Highland FR,Currently Operating,165347,eia63c_t1,2026-09-03T23:19:26Z
+South,AR,Highland Pellets,Currently Operating,744060,eia63c_t1,2026-09-03T23:19:26Z
+South,AR,Mtn. View,Currently Operating,32000,eia63c_t1,2026-09-03T23:19:26Z
+South,FL,Enviva Pellets Cottondale,Currently Operating,826725,eia63c_t1,2026-09-03T23:19:26Z
+South,GA,Appling County Pellets,Currently Operating,200000,eia63c_t1,2026-09-03T23:19:26Z
+South,GA,Fram Renewable Fuels - Hazlehurst,Currently Operating,350000,eia63c_t1,2026-09-03T23:19:26Z
+South,GA,Fram Telfair Forest Products - Lumber City,Temporarily Not in Operation,135000,eia63c_t1,2026-09-03T23:19:26Z
+South,GA,Georgia Biomass,Currently Operating,826733,eia63c_t1,2026-09-03T23:19:26Z
+South,GA,LJR Forest Products,Currently Operating,250000,eia63c_t1,2026-09-03T23:19:26Z
+South,GA,"Varn Wood Pellets, LLC",Currently Operating,88000,eia63c_t1,2026-09-03T23:19:26Z
+South,KY,Somerset Pellet Fuel,Currently Operating,72000,eia63c_t1,2026-09-03T23:19:26Z
+South,KY,Southern Kentucky Pellet Mill Inc.,Currently Operating,8000,eia63c_t1,2026-09-03T23:19:26Z
+South,LA,"Lasalle Bioenergy, LLC",Currently Operating,672901,eia63c_t1,2026-09-03T23:19:26Z
+South,LA,Morehouse Bioenergy,Currently Operating,609527,eia63c_t1,2026-09-03T23:19:26Z
+South,MS,Amite Bioenergy,Currently Operating,523693,eia63c_t1,2026-09-03T23:19:26Z
+South,NC,American Wood Fibers - Laurinburg,Currently Operating,50000,eia63c_t1,2026-09-03T23:19:26Z
+South,NC,Enviva Pellets Ahoskie,Currently Operating,385509,eia63c_t1,2026-09-03T23:19:26Z
+South,NC,"Enviva Pellets Northampton, LLC",Currently Operating,551156,eia63c_t1,2026-09-03T23:19:26Z
+South,NC,Enviva Pellets Sampson County,Currently Operating,551156,eia63c_t1,2026-09-03T23:19:26Z
+South,NC,Hamlet,Currently Operating,600000,eia63c_t1,2026-09-03T23:19:26Z
+South,SC,Allendale White Pellet Plant,Temporarily Not in Operation,32000,eia63c_t1,2026-09-03T23:19:26Z
+South,SC,Enviva Pellets Greenwood,Currently Operating,551150,eia63c_t1,2026-09-03T23:19:26Z
+South,TN,Hassell & Hughes Lumber Company,Currently Operating,18000,eia63c_t1,2026-09-03T23:19:26Z
+South,TN,"Henry County Hardwoods, Inc.",Currently Operating,36500,eia63c_t1,2026-09-03T23:19:26Z
+South,TN,"Jasper, LLC",Currently Operating,120000,eia63c_t1,2026-09-03T23:19:26Z
+South,TX,Woodville Pellets LLC,Currently Operating,507063,eia63c_t1,2026-09-03T23:19:26Z
+South,VA,American Wood Fibers - Marion,Currently Operating,45000,eia63c_t1,2026-09-03T23:19:26Z
+South,VA,"Enviva Pellets Southampton, LLC",Currently Operating,551156,eia63c_t1,2026-09-03T23:19:26Z
+South,VA,Lignetics - Kenbridge VA,Currently Operating,88000,eia63c_t1,2026-09-03T23:19:26Z
+South,VA,O'Malley Wood Pellets,Currently Operating,65000,eia63c_t1,2026-09-03T23:19:26Z
+South,VA,Turman Hardwood Pellets,Currently Operating,13000,eia63c_t1,2026-09-03T23:19:26Z
+South,VA,"Wood Fuel Developers, LLC - Waverly",Currently Operating,100000,eia63c_t1,2026-09-03T23:19:26Z
+West,CA,"Mallard Creek, Inc.",Currently Operating,100000,eia63c_t1,2026-09-03T23:19:26Z
+West,CA,Mendocino,Currently Operating,68000,eia63c_t1,2026-09-03T23:19:26Z
+West,ID,Lemhi Valley Pellets,Currently Operating,2400,eia63c_t1,2026-09-03T23:19:26Z
+West,ID,Lignetics - Sandpoint Id,Currently Operating,65000,eia63c_t1,2026-09-03T23:19:26Z
+West,ID,Rocky Canyon Pellet Company,Currently Operating,6500,eia63c_t1,2026-09-03T23:19:26Z
+West,NM,Mt. Taylor - Woodyourecycle,Currently Operating,4500,eia63c_t1,2026-09-03T23:19:26Z
+West,NM,Mt. Taylor Machine Pellet Fuel,Currently Operating,4500,eia63c_t1,2026-09-03T23:19:26Z
+West,OR,Bear Mountain Forest Products - Brownsville,Currently Operating,120000,eia63c_t1,2026-09-03T23:19:26Z
+West,OR,Bear Mountain Forest Products - Cascade Locks,Currently Operating,38340,eia63c_t1,2026-09-03T23:19:26Z
+West,OR,"Frank Pellets, LLC",Currently Operating,32000,eia63c_t1,2026-09-03T23:19:26Z
+West,OR,Pendleton Lumber Company,Currently Operating,22000,eia63c_t1,2026-09-03T23:19:26Z
+West,SD,Forest Products Distributors,Currently Operating,24960,eia63c_t1,2026-09-03T23:19:26Z
+West,SD,Spearfish Pellet Co. LLC,Currently Operating,45000,eia63c_t1,2026-09-03T23:19:26Z
+West,UT,Woodscape Of Utah,Currently Operating,9500,eia63c_t1,2026-09-03T23:19:26Z
+West,WA,Manke Lumber Company,Currently Operating,35000,eia63c_t1,2026-09-03T23:19:26Z
+West,WA,Olympus Pellets,Currently Operating,65000,eia63c_t1,2026-09-03T23:19:26Z
