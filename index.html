@@ -231,8 +231,8 @@ footer.site a{color:var(--mut)}
 
 <section class="sect"><div class="wrap"><h2>Sources and definitions</h2>
 <p><a href="https://www.eia.gov/biofuels/biomass/?year=2026&amp;month=5">EIA May 2026 report</a>: Tables 1, 3, 4 and 8; st means short tons. EIA export value shown here is calculated as reported quantity × reported average price.</p>
-<p><a href="https://www.depv.de/pelletpreis/">DEPV contract-price definition</a>: ENplus A1, loose blown-in pellets, delivery within 50 km, incidental costs included, VAT excluded. 3/6/26 t are order quantities, not bag sizes.</p>
-<p><a href="https://www.baltpool.eu/wp-content/uploads/2026/06/baltpool-index-api-documentation.pdf">Baltpool index API reference</a>: displayed series uses type=spot and country=lt, in EUR/MWh. The separate wood-pellet type is wood_pellets_spot.</p>
+<p><a href="https://www.depv.de/pelletpreis/">DEPV contract-price definition</a>: ENplus A1, loose blown-in pellets, delivery within 50 km, incidental costs included, VAT excluded. 3/6/26 t are delivered order quantities of loose pellets, not bag sizes.</p>
+<p><a href="https://www.baltpool.eu/en/api-service/">Baltpool index API reference</a>: the displayed series is the wood-chip index fetched as GET https://api-v2.baltpool.eu/api/index?type=spot&amp;country=lt, in EUR/MWh (the public index families are Wood chips SPOT indices, Wood chips Baltic FOB index and a separate Wood pellets SPOT index). The wood-pellet series is fetched with type=wood_pellets_spot and printed €65.68/MWh on 2026-09-01; it is not shown or substituted here.</p>
 <p><a href="https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=842&amp;period=2024&amp;cmdCode=440131&amp;flowCode=X">UN Comtrade query</a>: US exports, 2024, HS 440131. Net weight divided by 1,000 yields metric tonnes; customs value divided by that weight yields unit value. Country labels beyond this selected table remain under review.</p>
 <p>Different periods, products and units remain separate. These tables do not establish a current purchase price, landed cost, arbitrage margin or list of buyers. Older source data may be revised by its publisher.</p>
 </div></section>

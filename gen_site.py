@@ -286,7 +286,7 @@ def page(title: str, body: str, sample: bool = False) -> str:
 </html>"""
 
 
-SOURCE_NOTES = '\n<section class="sect"><div class="wrap"><h2>Sources and definitions</h2>\n<p><a href="https://www.eia.gov/biofuels/biomass/?year=2026&amp;month=5">EIA May 2026 report</a>: Tables 1, 3, 4 and 8; st means short tons. EIA export value shown here is calculated as reported quantity × reported average price.</p>\n<p><a href="https://www.depv.de/pelletpreis/">DEPV contract-price definition</a>: ENplus A1, loose blown-in pellets, delivery within 50 km, incidental costs included, VAT excluded. 3/6/26 t are order quantities, not bag sizes.</p>\n<p><a href="https://www.baltpool.eu/wp-content/uploads/2026/06/baltpool-index-api-documentation.pdf">Baltpool index API reference</a>: displayed series uses type=spot and country=lt, in EUR/MWh. The separate wood-pellet type is wood_pellets_spot.</p>\n<p><a href="https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=842&amp;period=2024&amp;cmdCode=440131&amp;flowCode=X">UN Comtrade query</a>: US exports, 2024, HS 440131. Net weight divided by 1,000 yields metric tonnes; customs value divided by that weight yields unit value. Country labels beyond this selected table remain under review.</p>\n<p>Different periods, products and units remain separate. These tables do not establish a current purchase price, landed cost, arbitrage margin or list of buyers. Older source data may be revised by its publisher.</p>\n</div></section>\n'
+SOURCE_NOTES = '\n<section class="sect"><div class="wrap"><h2>Sources and definitions</h2>\n<p><a href="https://www.eia.gov/biofuels/biomass/?year=2026&amp;month=5">EIA May 2026 report</a>: Tables 1, 3, 4 and 8; st means short tons. EIA export value shown here is calculated as reported quantity × reported average price.</p>\n<p><a href="https://www.depv.de/pelletpreis/">DEPV contract-price definition</a>: ENplus A1, loose blown-in pellets, delivery within 50 km, incidental costs included, VAT excluded. 3/6/26 t are delivered order quantities of loose pellets, not bag sizes.</p>\n<p><a href="https://www.baltpool.eu/en/api-service/">Baltpool index API reference</a>: the displayed series is the wood-chip index fetched as GET https://api-v2.baltpool.eu/api/index?type=spot&amp;country=lt, in EUR/MWh (the public index families are Wood chips SPOT indices, Wood chips Baltic FOB index and a separate Wood pellets SPOT index). The wood-pellet series is fetched with type=wood_pellets_spot and printed €65.68/MWh on 2026-09-01; it is not shown or substituted here.</p>\n<p><a href="https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=842&amp;period=2024&amp;cmdCode=440131&amp;flowCode=X">UN Comtrade query</a>: US exports, 2024, HS 440131. Net weight divided by 1,000 yields metric tonnes; customs value divided by that weight yields unit value. Country labels beyond this selected table remain under review.</p>\n<p>Different periods, products and units remain separate. These tables do not establish a current purchase price, landed cost, arbitrage margin or list of buyers. Older source data may be revised by its publisher.</p>\n</div></section>\n'
 
 # ================================================================ INDEX.HTML
 def mill_rows(df) -> str:
@@ -550,13 +550,19 @@ sample_digest_body = f"""
       <p>National: <b style="color:var(--amber)">6t €{DEPV6_L:,.2f}/t</b>
       ({delta_html(pct(DEPV6_L, DEPV6_P))} MoM) ·
       <b style="color:var(--amber)">26t €{DEPV26_L:,.2f}/t</b>
-      ({delta_html(pct(DEPV26_L, DEPV26_P))} MoM). Regional split
+      ({delta_html(pct(DEPV26_L, DEPV26_P))} MoM). 6t/26t are delivered order
+      quantities of loose blown-in ENplus A1 pellets (delivery within 50 km,
+      excl. VAT), not bag sizes. Regional split
       (Süd / Mitte / Nord-Ost by delivered quantity) in the
       <a href="sample-eubench.html">EU benchmarks sample</a>.</p></div>
-    <div class="card"><h3>Baltpool — Lithuanian wood-chip SPOT</h3>
+    <div class="card"><h3>Baltpool — wood-chip SPOT index, Lithuania</h3>
       <p>Sample weekly observation {esc(bp_last.period)}:
       <b style="color:var(--amber)">€{bp_last.value:,.2f}/MWh</b>
-      ({delta_html(BP_WOW)} WoW). Recent prints: {" · ".join(f"{r.period} €{r.value:,.2f}" for _, r in bp.tail(4).iterrows())}.</p></div>
+      ({delta_html(BP_WOW)} WoW). Recent prints: {" · ".join(f"{r.period} €{r.value:,.2f}" for _, r in bp.tail(4).iterrows())}.
+      Series: GET https://api-v2.baltpool.eu/api/index?type=spot&amp;country=lt
+      (Baltpool wood-chip SPOT index for Lithuania; the separate wood-pellet
+      SPOT index, type=wood_pellets_spot, is not shown here).
+      <a href="https://www.baltpool.eu/en/api-service/">API reference</a>.</p></div>
   </div>
 
   <h2>5 · Export destinations — {EX_YEAR} (UN Comtrade HS 4401.31)</h2>
@@ -722,7 +728,7 @@ sample_eubench_body = f"""
   ({len(bp)} weekly prints). 12-month range: €{bp[bp.period >= '2025-09'].value.min():,.2f} –
   €{bp[bp.period >= '2025-09'].value.max():,.2f}/MWh. Source: BaltPool.</p>
 
-  <div class="note"><b>Different products:</b> DEPV measures delivered ENplus A1 pellet prices in Germany, excluding VAT. Baltpool type=spot, country=lt is Lithuanian wood-chip SPOT. Its separate wood-pellet index uses type=wood_pellets_spot and is not displayed here. No currency, energy, grade or freight normalization has been applied.</div>
+  <div class="note"><b>Different products:</b> DEPV measures delivered quantities of loose blown-in ENplus A1 pellet prices in Germany, excl. VAT (delivery within 50 km; 3/6/26 t are delivered order quantities, not bag sizes). Baltpool type=spot, country=lt is the wood-chip SPOT index for Lithuania, fetched from https://api-v2.baltpool.eu/api/index?type=spot&amp;country=lt. Baltpool's separate wood-pellet SPOT index uses type=wood_pellets_spot (€65.68/MWh on 2026-09-01, unverified against our snapshot) and is not displayed here. No currency, energy, grade or freight normalization has been applied.</div>
 
   <div class="btnrow">
     <a class="btn" href="../index.html#pricing">Check product availability</a>
